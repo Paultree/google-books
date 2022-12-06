@@ -59,7 +59,9 @@ Application Design (required):
 -   [Download Postman](https://www.postman.com/downloads/)
 
 
-Plan
-- Build HTML
-    - One before search
-    - One after search
+6/12/2022
+- Built template files
+- Created HTML
+    - Single Page Application.
+    - Upon hitting search button, entire search header will move to top of page.
+    - Grid of search results will return to user.

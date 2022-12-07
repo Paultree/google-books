@@ -13,10 +13,11 @@ The aim is for the user to be able to search for a book inside the Google Books 
 Create a page that allows users to search for books
 Page should include the following:
 
--   Header section introducing the page - []
--   Form containing a text input and a submit / search button - []
+-   Header section introducing the page - [x]
+-   Form containing a text input and a submit / search button - [x]
 
 -   A grid of books - []
+
     Instructions:
 
 -   When the submit button is clicked you need the request books from the Google books API using the input value as your query string - []
@@ -34,8 +35,8 @@ Application Design (required):
 
 -   You should separate DOM functions and non-DOM functions in different modules. - []
 -   Write as many non-DOM functions as you can Functions should do 1 thing, and should be as pure and reusable as possible - []
--   Always use iterators over loops - []
--   Always parametrize and abstract large pieces of duplicate code. - []
+-   Always use iterators over loops - [x]
+-   Always parametrize and abstract large pieces of duplicate code. - [x]
 
 ## Bonus (optional, but highly recommended):
 
@@ -65,3 +66,8 @@ Application Design (required):
     - Single Page Application.
     - Upon hitting search button, entire search header will move to top of page.
     - Grid of search results will return to user.
+
+7/12/2022
+- Fetched API..
+- Need to figure out a CLEAN way to render book info to page...
+- Getting an uncaught error on line 6 of dom-module.js

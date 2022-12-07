@@ -6,21 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Search API</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module" defer></script>
 </head>
 <body>
     <nav class="search" id="searchBar">
         <h1 class="search__title">Google Books Clone</h1>
         <form class="search__form">
-            <input type="text" class="search__form--input">
+            <input type="text" class="search__form--input" id="userInput">
             <button class="search__form--button" id="searchButton">Search</button>
         </form>
         <p class="search__para">Search the world's most comprehensive index of full-text books.</p>
         <a href="#" class="search__link">My library</a>
     </nav>
 
-    <main id="bookGrid">
-
-    </main>
+    <main id="bookGrid"></main>
 </body>
 </html>

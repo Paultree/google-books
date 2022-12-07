@@ -19,24 +19,29 @@ const searchBook = async (input) => {
 
     console.log(dataObj.items);
 
-    const bookInfo = dataObj.items.map((book) => {
+    const bookInfo = await dataObj.items.map((book) => {
         const {title, authors, description, imageLinks, ...rest} = book.volumeInfo;
         return {title, authors, description, imageLinks};
     });
 
+    
     console.log(bookInfo); //is an array of objects with filtered keys...
     
+    console.log(bookInfo[0].imageLinks.thumbnail);
+
     //render img to top
     //render title to h2
     //join authors and seperate by &, then render to h4
     //render description to p
    
 
-    bookInfo.forEach((book) => {
-        renderBookInfo(book);
+    const imgArr = bookInfo.map((book) => {
+        return book.imageLinks.thumbnail === undefined ? 'missing' : 'works';
         
+ 
     })
 
+    console.log(imgArr);
 }
 
 searchBook('Captain Underpants');

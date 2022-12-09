@@ -11,7 +11,7 @@ export const renderBookInfo = (arrItem) => {
   title.innerText = arrItem["title"];
 
   const authors = document.createElement("h4");
-  authors.innerText = arrItem["authors"].join(" & ");
+  authors.innerText = arrItem['authors'];
 
   const desc = document.createElement("p");
   desc.innerText = arrItem["description"];

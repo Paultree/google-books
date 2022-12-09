@@ -44,13 +44,14 @@ img {
 
         &--input {
             width: 83%;
-            border-radius: 10px;
+            border-radius: 20px;
+            padding: 0.5rem;
         }
 
         &--button {
             width: 15%;
             background-color: #A4BE7B;
-            border-radius: 10px;
+            border-radius: 20px;
         }
     }
 }
@@ -75,6 +76,7 @@ img {
     font-size: 0.75rem;
     box-shadow: 0 0 10px;
     
+    
 }
 
 .book-container p {
@@ -92,4 +94,9 @@ img {
 
 a:hover {
     color: red;
+}
+
+.book-container:hover {
+    box-shadow: 0 0 20px;
+    cursor: pointer;
 }

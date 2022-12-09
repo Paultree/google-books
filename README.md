@@ -77,3 +77,10 @@ Application Design (required):
         -  desc, change to 'No description'.
         - image, change to an image to no photo
         - may be able to change at destructuring part...
+
+8/12/2022
+- Basic functionality achieved.
+- Need to implement an error message when the following happens:
+    - search failed..
+    - no results found(similar to above)
+    - user submits search before inputting a search word..

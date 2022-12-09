@@ -1,5 +1,7 @@
 import { renderBookInfo } from "./dom-module.js";
 
+const missingImg = 'missing.jpeg';
+
 const searchBar = document.getElementById('searchBar');
 
 const searchBtn = document.getElementById('searchButton');
@@ -9,25 +11,34 @@ const userInput = document.getElementById('userInput');
 
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    searchBar.style.height = 'auto';
+    searchBar.classList.add('top');
 })
 
 const searchBook = async (input) => {
     const searchWord = input.split(' ').join('+');
+    console.log(searchWord);
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchWord}`);
     const dataObj = await response.json();
 
     console.log(dataObj.items);
 
     const bookInfo = await dataObj.items.map((book) => {
-        const {title, authors, description, imageLinks, ...rest} = book.volumeInfo;
-        return {title, authors, description, imageLinks};
+        console.log(book.volumeInfo.imageLinks)
+        return {
+          title: book.volumeInfo.title || "Title not available",
+          authors: book.volumeInfo.authors || "Authors not available",
+          description:
+            book.volumeInfo.description || "Description not available",
+          image:
+            book.volumeInfo.imageLinks ||
+            missingImg,
+        };
     });
 
     
     console.log(bookInfo); //is an array of objects with filtered keys...
     
-    console.log(bookInfo[0].imageLinks.thumbnail);
+    // console.log(bookInfo.imageLinks.thumbnail);
 
     //render img to top
     //render title to h2
@@ -36,12 +47,12 @@ const searchBook = async (input) => {
    
 
     const imgArr = bookInfo.map((book) => {
-        return book.imageLinks.thumbnail === undefined ? 'missing' : 'works';
+        renderBookInfo(book);
         
  
     })
 
-    console.log(imgArr);
+    
 }
 
-searchBook('Captain Underpants');
+searchBook('the silent patient');

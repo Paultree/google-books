@@ -73,3 +73,7 @@ Application Design (required):
 - Getting an uncaught error on line 6 of dom-module.js
     - some keys have an undefined value...
         - will need to add a .catch to these errors..
+        - alternatively, for any undefined, we can change it at variable defining..
+        -  desc, change to 'No description'.
+        - image, change to an image to no photo
+        - may be able to change at destructuring part...

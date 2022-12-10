@@ -1,7 +1,13 @@
+import { openModal } from "./modal-module.js";
+
 export const bookGrid = document.getElementById('bookGrid');
 
+
 export const renderBookInfo = (arrItem) => {
+  
+
   const container = document.createElement("div");
+  
   container.classList.add('book-container');
 
   const img = document.createElement("img");
@@ -17,6 +23,11 @@ export const renderBookInfo = (arrItem) => {
   desc.innerText = arrItem["description"];
 
   container.append(img, title, authors, desc);
+
+  container.addEventListener('click', () => {
+    openModal(arrItem);
+  });
+
   bookGrid.appendChild(container);
 };
 

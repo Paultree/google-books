@@ -28,3 +28,9 @@ export const openModal = (arr) => {
 
     modal.append(img, title, authors, desc, year, lang);
 }
+
+window.addEventListener("click", (e) => {
+  if (e.target == modalBox) {
+    modalBox.style.display = "none";
+  }
+});

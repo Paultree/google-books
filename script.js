@@ -66,9 +66,3 @@ searchBtn.addEventListener('click', (e) => {
     
 
 })
-
-window.addEventListener('click', (e) => {
-    if (e.target == modalBox) {
-        modalBox.style.display = 'none';
-    } 
-})

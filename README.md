@@ -89,3 +89,4 @@ Application Design (required):
 - Made some cleanups
 - Implemented modal boxes
 - Todo: Make app accessible to phone users..
+- Todo: Rebuild on React..

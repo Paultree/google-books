@@ -1,30 +1,13 @@
 import search from '../../search.png'
 import styles from './SearchBar.module.scss'
-import { useState } from 'react'
-import CardGrid from '../CardGrid/CardGrid'
+import { useState, useContext} from 'react'
+import { InputValueContext } from '../../contexts/InputValuesContext/InputValuesContext'
+
 
 const SearchBar = () => {
-    const [inputValue, setInputValue] = useState('');
-
-    const [btnClicked, setBtnClicked] = useState(false);
-
-    console.log(inputValue);
-
-    const handleChange = (event) => {
-        setInputValue(event.target.value);
-        
-    }
-
-    const handleSearch = (event) => {
-        event.preventDefault();
-        console.log('old value', inputValue);
-        setBtnClicked(true);
-        
-    }
-
+  const { inputValue, btnClicked, handleChange, handleSearch } = useContext(InputValueContext)
     const searchClass = btnClicked ? [styles.SearchBar, styles.Top] : [styles.SearchBar];
   return (
-    <div>
       <div className={searchClass.join(" ")}>
         <h1>Google Books Clone</h1>
         <div>
@@ -42,8 +25,8 @@ const SearchBar = () => {
         <p>Search the world's most comprehensive index of full-text books.</p>
         <a href="#">My library</a>
       </div>
-      {btnClicked ? <CardGrid /> : ""}
-    </div>
+      
+    
   );
 }
 

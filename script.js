@@ -1,5 +1,5 @@
 import { renderBookInfo, bookGrid } from "./dom-module.js";
-import { modalBox } from "./modal-module.js";
+
 
 const missingImg = 'missing.jpeg';
 
@@ -14,13 +14,13 @@ const lastResult = document.getElementById("lastResult");
 const searchBook = async (input) => {
     try {
         const searchWord = input.split(" ").join("+");
-  console.log(searchWord);
+  
   const response = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${searchWord}&maxResults=40`
   );
-  console.log(response);
+  
   const dataObj = await response.json();
-    console.log(dataObj);
+    
   const bookInfo = await dataObj.items.map((book, index) => {
     return {
         id: index,
@@ -33,15 +33,13 @@ const searchBook = async (input) => {
       published: book?.volumeInfo?.publishedDate || 'Information missing', 
     };
   });
-
-    console.log(bookInfo);
+  
   bookInfo.forEach((book) => {
     renderBookInfo(book);
     lastResult.innerText = "No more results.";
    
   });
     } catch(error) {
-        console.log(error);
         lastResult.innerText = 'Could not find what you were looking for. Try another keyword.'
         lastResult.style.height = '100vh';
 
@@ -65,10 +63,4 @@ searchBtn.addEventListener('click', (e) => {
     userInput.value = "";
     
 
-})
-
-window.addEventListener('click', (e) => {
-    if (e.target == modalBox) {
-        modalBox.style.display = 'none';
-    } 
 })

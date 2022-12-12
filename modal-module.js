@@ -17,14 +17,20 @@ export const openModal = (arr) => {
     authors.innerText = `Author: ${arr["authors"]}`;
 
     const desc = document.createElement("p");
-    desc.innerHTML = `Description: ${arr["description"]}`;
+    desc.innerHTML = `<b>Description:</b> ${arr["description"]}`;
 
     const year = document.createElement('p');
-    year.innerText = `Year published: ${arr['published']}`;
+    year.innerHTML = `<b>Year published:</b> ${arr['published']}`;
 
     const lang = document.createElement("p");
-    lang.innerText = `Language: ${arr['language']}`;
+    lang.innerHTML = `<b> Language: </b> ${arr['language']}`;
 
 
     modal.append(img, title, authors, desc, year, lang);
 }
+
+window.addEventListener("click", (e) => {
+  if (e.target == modalBox) {
+    modalBox.style.display = "none";
+  }
+});

@@ -8,13 +8,12 @@ function App() {
   
 
   return (
-    <InputValueProvider>
-      
-      <SearchBar />
-      <CardGrid />
-        
-      
-    </InputValueProvider>
+    <div className={styles.App}>
+      <InputValueProvider>
+        <SearchBar />
+        <CardGrid />
+      </InputValueProvider>
+    </div>
   );
 }
 

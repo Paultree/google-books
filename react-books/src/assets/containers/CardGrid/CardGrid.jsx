@@ -1,17 +1,19 @@
-import {useContext, useEffect} from 'react'
+import {useContext, useEffect, useState} from 'react'
 import styles from './CardGrid.module.scss'
 import { InputValueContext } from "../../contexts/InputValuesContext/InputValuesContext";
-
+import Card from '../../components/Card/Card';
 
 const CardGrid = () => {
   const { inputValue, btnClicked, handleChange, handleSearch } = useContext(InputValueContext);
   
+  const [bookList, setBookList] = useState([]);
+
   const inputSearch = inputValue.split(' ').join('+');
   console.log(inputSearch);
 
-  const getBooks = async () => {
+  const getBooks = async (input) => {
 
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${inputSearch}`)
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${input}`)
     console.log(response);
 
     const dataObj = await response.json();
@@ -30,14 +32,21 @@ const CardGrid = () => {
         published: book?.volumeInfo?.publishedDate || "Information missing",
       };
     });
-    console.log(bookInfo);
+
+    setBookList(bookInfo);
+
+
   }
   
-  useEffect(() => {getBooks()},[btnClicked]);
+  useEffect(() => {getBooks(inputSearch)},[btnClicked]);
 
   return (
-    <div>
-      {/* {.map()} */}
+    <div className={styles.CardGrid}>
+      {bookList.map((book, index) => {
+        return (
+          <Card key={index} image={book.image}title={book.title} authors={book.authors} description={book.description} />
+        )
+      })}
     </div>
   )
 }

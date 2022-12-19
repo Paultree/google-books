@@ -1,4 +1,5 @@
-import { renderBookInfo } from "./dom-module.js";
+import { renderBookInfo, bookGrid } from "./dom-module.js";
+import { modalBox } from "./modal-module.js";
 
 const missingImg = 'missing.jpeg';
 
@@ -8,51 +9,60 @@ const searchBtn = document.getElementById('searchButton');
 
 const userInput = document.getElementById('userInput');
 
+const lastResult = document.getElementById("lastResult");
+
+const searchBook = async (input) => {
+    try {
+        const searchWord = input.split(" ").join("+");
+  console.log(searchWord);
+  const response = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${searchWord}&maxResults=40`
+  );
+  console.log(response);
+  const dataObj = await response.json();
+    console.log(dataObj);
+  const bookInfo = await dataObj.items.map((book, index) => {
+    return {
+        id: index,
+      title: book?.volumeInfo?.title || "Title not available",
+      authors:
+        book?.volumeInfo?.authors?.join(" & ") || "Authors not available",
+      description: book?.volumeInfo?.description || "Description not available",
+      image: book?.volumeInfo?.imageLinks?.thumbnail || missingImg,
+      language: book?.volumeInfo?.language.toUpperCase() || "Information missing",
+      published: book?.volumeInfo?.publishedDate || 'Information missing', 
+    };
+  });
+
+    console.log(bookInfo);
+  bookInfo.forEach((book) => {
+    renderBookInfo(book);
+    lastResult.innerText = "No more results.";
+   
+  });
+    } catch(error) {
+        console.log(error);
+        lastResult.innerText = 'Could not find what you were looking for. Try another keyword.'
+        lastResult.style.height = '100vh';
+
+    }
+  
+
+
+  
+    lastResult.style.display = 'block';
+};
+
+//
 
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    lastResult.innerText = '';
     searchBar.classList.add('top');
+    bookGrid.innerHTML = '';
+    const searchInput = userInput.value;
+    searchBook(searchInput);
+    userInput.value = "";
+    
+
 })
-
-const searchBook = async (input) => {
-    const searchWord = input.split(' ').join('+');
-    console.log(searchWord);
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchWord}`);
-    const dataObj = await response.json();
-
-    console.log(dataObj.items);
-
-    const bookInfo = await dataObj.items.map((book) => {
-        console.log(book.volumeInfo.imageLinks)
-        return {
-          title: book.volumeInfo.title || "Title not available",
-          authors: book.volumeInfo.authors || "Authors not available",
-          description:
-            book.volumeInfo.description || "Description not available",
-          image:
-            book.volumeInfo.imageLinks ||
-            missingImg,
-        };
-    });
-
-    
-    console.log(bookInfo); //is an array of objects with filtered keys...
-    
-    // console.log(bookInfo.imageLinks.thumbnail);
-
-    //render img to top
-    //render title to h2
-    //join authors and seperate by &, then render to h4
-    //render description to p
-   
-
-    const imgArr = bookInfo.map((book) => {
-        renderBookInfo(book);
-        
- 
-    })
-
-    
-}
-
-searchBook('the silent patient');

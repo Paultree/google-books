@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 
@@ -54,7 +54,6 @@ img {
   justify-content: center;
   text-align: center;
   background-color: #A4BE7B;
-  height: 100%;
 }
 
 .book-container {
@@ -68,30 +67,9 @@ img {
   background-color: white;
   font-size: 0.75rem;
   box-shadow: 0 0 10px;
-  animation: fadeInAnimation ease-in 0.5s;
 }
 
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 .book-container p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.book-container h2 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.book-container h4 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -102,8 +80,6 @@ img {
   padding-bottom: 1rem;
   height: auto;
   box-shadow: 0 0 10px;
-  position: sticky;
-  top: 0;
 }
 
 a:hover {
@@ -115,40 +91,4 @@ a:hover {
   cursor: pointer;
 }
 
-#modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: auto;
-  padding: 10px;
-  border: 2px solid #285430;
-  width: 80%;
-  text-align: center;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 0 10px;
-}
-
-#modalBox {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-#lastResult {
-  text-align: center;
-  background-color: #A4BE7B;
-  margin: 0;
-  padding: 10px;
-  display: none;
-}
-
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=styles.ss.map */

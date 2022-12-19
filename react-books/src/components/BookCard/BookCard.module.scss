@@ -1,0 +1,50 @@
+.BookCard {
+  text-align: center;
+  border: 2px solid #285430;
+  width: 25rem;
+  height: 25rem;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 0.75rem;
+  box-shadow: 0 0 10px;
+  overflow: hidden;
+}
+
+img {
+  width: 10rem;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.BookCard p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.BookCard h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.BookCard h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.BookCard:hover {
+  cursor: pointer;
+  box-shadow: 0 0 20px;
+  transition: 0.3s ease-out;
+}
